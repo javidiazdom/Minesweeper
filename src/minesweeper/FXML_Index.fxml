@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Polygon?>
+
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="450" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="minesweeper.FXML_IndexController"
+            maxHeight="600" maxWidth="600"
+            style="-fx-background-color:#d1d1d1;">
+    <children>
+        <Polygon fx:id="triangle_gray"/>
+        <Polygon fx:id="triangle_white"/>
+        <Polygon fx:id="rectangle1" style="-fx-fill:#d1d1d1;"/>
+        <fx:include source="/minesweeper/grid/FXML_Grid.fxml"/>
+    </children>
+</AnchorPane>
