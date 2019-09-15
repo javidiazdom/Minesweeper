@@ -5,6 +5,7 @@ import javafx.fxml.*;
 import java.net.URL;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.GridPane;
 
 /**
  *
@@ -13,10 +14,12 @@ import javafx.scene.layout.Region;
 public class FXML_GridController implements Initializable {
     
     @FXML
-    private SquareArray square_array = new SquareArray();
+    private GridPane tabla;
+    
+    private SquareArray squares;
     
     @Override
     public void initialize (URL ur, ResourceBundle rb) {
-        
+        squares = new SquareArray();
     }
 }

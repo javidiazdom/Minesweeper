@@ -18,6 +18,7 @@ public class Square extends Region {
         setWidth(25.5);
         this.x = i;
         this.y = j;
+        
     }
     
     public boolean check() {
