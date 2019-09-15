@@ -34,19 +34,19 @@ public class FXML_IndexController implements Initializable {
         triangle_gray.setFill(Color.GREY);
         triangle_gray.getPoints().addAll(new Double[]{
             440.0, 10.0,
-            440.0, 590.0,
-            10.0, 590.0 
+            440.0, 520.0,
+            10.0, 520.0 
         });
         triangle_white.getPoints().addAll(new Double[]{
            10.0,10.0,
-           10.0,590.0,
+           10.0,520.0,
            440.0,10.0
         });
         triangle_white.setFill(Color.WHITE);
         rectangle1.getPoints().addAll(new Double[]{
             13.00,13.00,
-            13.00,587.00,
-            437.00,587.00,
+            13.00,517.00,
+            437.00,517.00,
             437.00,13.00
         });
     }

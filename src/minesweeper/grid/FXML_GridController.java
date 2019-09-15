@@ -15,7 +15,7 @@ public class FXML_GridController implements Initializable {
     
     @FXML
     private GridPane tabla;
-    
+    @FXML
     private SquareArray squares;
     
     @Override

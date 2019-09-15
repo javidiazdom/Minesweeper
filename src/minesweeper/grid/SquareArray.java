@@ -13,32 +13,61 @@ import java.util.Random;
 public class SquareArray extends GridPane implements Initializable{
     
     private Square[][] squares;
-    private int nMinas=10;
+    
+    //Constants:
+    private int nMines=10;
+    
+    //Size of the board
+    int size_x = 16;
+    int size_y = 16;
     
     public SquareArray () {
-        setMinHeight(509.0);
-        setMinWidth(408.0);
+        setMinHeight(400.0);
+        setMinWidth(400.0);
         setLayoutX(21.0);
-        setLayoutY(70.00);
+        setLayoutY(90.00);
         setStyle("-fx-background-color: #d1d1d1;-fx-border-width: 3; -fx-border-color: grey white white grey;");
+        shuffle();
     }
     
     @Override
     public void initialize (URL ur, ResourceBundle rb) {
-        shuffle();
+        
     }
     
     protected void shuffle () {
-        squares = new Square[16][16];
+        squares = new Square[size_x][size_y];
         for (int i = 0; i<16;i++) {
             for (int j = 0; j<16; j++) {
-                squares[i][j] = new Square(i,j);
-                this.add(squares[i][j],i,j);
+                squares[i][j] = new Square(i,j,this);
+                add(squares[i][j],i,j);
+            }
+        }
+        
+        int m = 0;
+        while(m < nMines) {
+            Random r = new Random();
+            int i = r.nextInt(size_x);
+            int j = r.nextInt(size_y);
+            if (!squares[i][j].check()) {
+                squares[i][j].setMine();
+                m++;
             }
         } 
     }
     
-    public int getNMinas () {
-        return nMinas;
+    /*
+    
+    */
+    public int getNMines () {
+        return nMines;
+    }
+    
+    public void handleClick (Square clicked) {
+        if (clicked.check()) {
+            System.out.println("Mina");
+        } else {
+            System.out.println("No mina");
+        }
     }
 }
