@@ -1,9 +1,10 @@
 package minesweeper.grid;
 
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import java.net.URL;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 
 /**
  *
@@ -11,7 +12,8 @@ import javafx.scene.control.TableView;
  */
 public class FXML_GridController implements Initializable {
     
-    private TableView<Square> table;
+    @FXML
+    private SquareArray square_array = new SquareArray();
     
     @Override
     public void initialize (URL ur, ResourceBundle rb) {
