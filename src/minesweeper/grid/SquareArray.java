@@ -25,7 +25,7 @@ public class SquareArray extends Region implements Initializable{
     @Override
     public void initialize (URL ur, ResourceBundle rb) {
         Random r = new Random();
-        shuffle(r.nexInt());
+        shuffle(r.nextInt());
     }
     
     protected void shuffle (double seed) {
