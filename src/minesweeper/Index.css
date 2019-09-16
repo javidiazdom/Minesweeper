@@ -1,0 +1,38 @@
+
+/* 
+    Created on : 16-sep-2019, 23:09:33
+    Author     : javid
+*/
+#unclicked {
+    -fx-background-color: #d1d1d1;
+    -fx-border-color: white grey grey white;
+    -fx-border-width: 3;
+}
+
+
+#flag{
+    -fx-background-image: url("mark.jpg");
+    -fx-background-repeat: strech;
+    -fx-background-size: 25 25;
+    -fx-background-position: center center;
+}
+
+#mine{
+    -fx-background-image: url("bomb.png");
+    -fx-background-repeat: strech;
+    -fx-background-size: 25 25;
+    -fx-background-position: center center;
+    -fx-border-width: 1; 
+    -fx-background-color: #ff0000;
+}
+
+#notmine {
+    -fx-border-color: #a1a1a1 #a1a1a1 #a1a1a1 #a1a1a1;
+    -fx-border-width: 1;
+}
+
+#square-array {
+    -fx-background-color: #d1d1d1;
+    -fx-border-width: 3; 
+    -fx-border-color: grey white white grey;
+}

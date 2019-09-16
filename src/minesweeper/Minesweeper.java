@@ -23,6 +23,8 @@ public class Minesweeper extends Application {
         
         Scene scene = new Scene(root);
         
+        scene.getStylesheets().addAll(this.getClass().getResource("/minesweeper/Index.css").toExternalForm());
+        
         stage.setScene(scene);
         stage.show();
     }

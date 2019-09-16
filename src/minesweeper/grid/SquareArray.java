@@ -15,6 +15,7 @@ public class SquareArray extends GridPane implements Initializable{
     private Square[][] squares;
     
     //Constants:
+    private int flags;
     private int nMines=10;
     
     //Size of the board
@@ -26,7 +27,7 @@ public class SquareArray extends GridPane implements Initializable{
         setMinWidth(400.0);
         setLayoutX(21.0);
         setLayoutY(90.00);
-        setStyle("-fx-background-color: #d1d1d1;-fx-border-width: 3; -fx-border-color: grey white white grey;");
+        setId("square-array");
         shuffle();
     }
     
@@ -65,9 +66,17 @@ public class SquareArray extends GridPane implements Initializable{
     
     public void handleClick (Square clicked) {
         if (clicked.check()) {
-            System.out.println("Mina");
+            //logic of unveiling mines
         } else {
-            System.out.println("No mina");
+            //logic of ending game
         }
+    }
+    
+    protected void addFlag() {
+        flags++;
+    }
+    
+    public int getFlags() {
+        return flags;
     }
 }
