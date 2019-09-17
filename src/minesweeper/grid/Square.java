@@ -1,17 +1,9 @@
 package minesweeper.grid;
 
-import java.io.File;
 import javafx.event.EventHandler;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javax.imageio.ImageIO;
 /**
  *
  * @author javidiazdom
@@ -19,6 +11,7 @@ import javax.imageio.ImageIO;
 public class Square extends Pane {
     protected boolean isMine;
     protected boolean isChecked;
+    private boolean flagged;
     
     SquareArray parent;
     
@@ -26,7 +19,9 @@ public class Square extends Pane {
     private int y;
     
     public Square(int i,int j, SquareArray parent){
-        this.parent = parent; 
+        this.parent = parent;
+        isChecked = false;
+        flagged = false;
         setId("unclicked");
         setMinHeight(25.00);
         setMinWidth(25.00);
@@ -70,8 +65,14 @@ public class Square extends Pane {
     }
     
     private void handleSecondaryClick () {
-        setId("flag");
-        parent.addFlag();
+        if (!flagged) {
+            setId("flag");
+            parent.addFlag(1);
+        } else {
+            setId("unclicked");
+            parent.addFlag(-1);
+        }
+        flagged = !flagged;
     }
     
 }

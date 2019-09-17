@@ -72,8 +72,8 @@ public class SquareArray extends GridPane implements Initializable{
         }
     }
     
-    protected void addFlag() {
-        flags++;
+    protected void addFlag(int n) {
+        flags+= n;
     }
     
     public int getFlags() {
