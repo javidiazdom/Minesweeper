@@ -65,10 +65,10 @@ public class Square extends Pane {
     }
     
     private void handleSecondaryClick () {
-        if (!flagged) {
+        if (!flagged && !isChecked) {
             setId("flag");
             parent.addFlag(1);
-        } else {
+        } else if (!isChecked) {
             setId("unclicked");
             parent.addFlag(-1);
         }

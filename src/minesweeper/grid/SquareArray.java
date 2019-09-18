@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.*;
 import java.util.Random;
+import minesweeper.GameLogic;
 
 /**
  *
@@ -23,12 +24,9 @@ public class SquareArray extends GridPane implements Initializable{
     int size_y = 16;
     
     public SquareArray () {
-        setMinHeight(400.0);
-        setMinWidth(400.0);
         setLayoutX(21.0);
         setLayoutY(90.00);
         setId("square-array");
-        shuffle();
     }
     
     @Override
@@ -36,7 +34,7 @@ public class SquareArray extends GridPane implements Initializable{
         
     }
     
-    protected void shuffle () {
+    public void shuffle () {
         squares = new Square[size_x][size_y];
         for (int i = 0; i<16;i++) {
             for (int j = 0; j<16; j++) {
@@ -54,7 +52,8 @@ public class SquareArray extends GridPane implements Initializable{
                 squares[i][j].setMine();
                 m++;
             }
-        } 
+        }
+        System.out.println(this.hashCode());
     }
     
     /*
@@ -68,7 +67,7 @@ public class SquareArray extends GridPane implements Initializable{
         if (clicked.check()) {
             //logic of unveiling mines
         } else {
-            //logic of ending game
+            //GameLogic.ResetGame();
         }
     }
     
