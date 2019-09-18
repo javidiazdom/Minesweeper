@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseButton;
+import minesweeper.GameLogic;
 /**
  *
  * @author javidiazdom
@@ -59,7 +60,7 @@ public class Square extends Pane {
     }
     
     
-    public void reset (boolean mine) {
+    public void reset () {
         isMine = true;
         isChecked = false;
     }

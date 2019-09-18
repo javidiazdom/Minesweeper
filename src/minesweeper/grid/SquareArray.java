@@ -27,6 +27,13 @@ public class SquareArray extends GridPane implements Initializable{
         setLayoutX(21.0);
         setLayoutY(90.00);
         setId("square-array");
+        squares = new Square[size_x][size_y];
+        for (int i = 0; i<16;i++) {
+            for (int j = 0; j<16; j++) {
+                squares[i][j] = new Square(i,j,this);
+                add(squares[i][j],i,j);
+            }
+        }
     }
     
     @Override
@@ -35,14 +42,6 @@ public class SquareArray extends GridPane implements Initializable{
     }
     
     public void shuffle () {
-        squares = new Square[size_x][size_y];
-        for (int i = 0; i<16;i++) {
-            for (int j = 0; j<16; j++) {
-                squares[i][j] = new Square(i,j,this);
-                add(squares[i][j],i,j);
-            }
-        }
-        
         int m = 0;
         while(m < nMines) {
             Random r = new Random();
@@ -56,6 +55,15 @@ public class SquareArray extends GridPane implements Initializable{
         System.out.println(this.hashCode());
     }
     
+    public void reset () {
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[i].length; j++) {
+                squares[i][j].reset();
+            }
+        }
+        shuffle();
+    }
+    
     /*
     
     */
@@ -64,10 +72,11 @@ public class SquareArray extends GridPane implements Initializable{
     }
     
     public void handleClick (Square clicked) {
-        if (clicked.check()) {
+        if (!clicked.check()) {
             //logic of unveiling mines
         } else {
-            //GameLogic.ResetGame();
+            squares = null;
+            System.out.println("check");
         }
     }
     
