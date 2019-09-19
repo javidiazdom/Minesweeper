@@ -18,6 +18,8 @@
         <Polygon fx:id="triangle_gray"/>
         <Polygon fx:id="triangle_white"/>
         <Polygon fx:id="rectangle1" style="-fx-fill:#d1d1d1;"/>
-        <SquareArray fx:id="squares"></SquareArray>
+        <SquareArray fx:id="squares"/>
+        <Pane fx:id="reset_button" onMousePressed="#resetClick" onMouseReleased="#resetRelease"
+              id = "resetUnclicked" prefWidth = "50" prefHeight="50"/>
     </children>
 </AnchorPane>

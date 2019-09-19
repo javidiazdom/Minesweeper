@@ -4,7 +4,8 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseButton;
-import minesweeper.GameLogic;
+import javafx.scene.control.Label;
+
 /**
  *
  * @author javidiazdom
@@ -13,6 +14,8 @@ public class Square extends Pane {
     protected boolean isMine;
     protected boolean isChecked;
     private boolean flagged;
+    
+    private Label nMinesAround;
     
     SquareArray parent;
     
@@ -59,10 +62,15 @@ public class Square extends Pane {
         return isMine;
     }
     
+    public boolean isMine () {
+        return isMine;
+    }
+    
     
     public void reset () {
-        isMine = true;
+        isMine = false;
         isChecked = false;
+        setId("unclicked");
     }
     
     private void handleSecondaryClick () {
@@ -76,4 +84,26 @@ public class Square extends Pane {
         flagged = !flagged;
     }
     
+    public int getX () {
+        return x;
+    }
+    
+    public int getY () {
+        return y;
+    }
+    
+    public boolean isChecked() {
+        return isChecked;
+    }
+    
+    public void setN (int in) {
+        setId("notmine");
+        isChecked=true;
+        if (in != 0) {
+            System.out.println(in);
+            nMinesAround = new Label(""+in+"");
+            nMinesAround.setId(""+in+"");
+            this.getChildren().add(nMinesAround);
+        }
+    }
 }

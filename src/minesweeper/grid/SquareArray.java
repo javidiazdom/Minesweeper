@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.*;
 import java.util.Random;
-import minesweeper.GameLogic;
+import minesweeper.Minesweeper;
 
 /**
  *
@@ -13,11 +13,24 @@ import minesweeper.GameLogic;
  */
 public class SquareArray extends GridPane implements Initializable{
     
-    private Square[][] squares;
+    private class Coordinates {
+        int x;
+        int y;
+        public Coordinates (int i, int j) {
+            x = i;
+            y = j;
+        }
+    }
+    
+    private final Square[][] squares;
     
     //Constants:
     private int flags;
-    private int nMines=10;
+    private final int nTotalMines=10;
+    
+    //Variables
+    private int nMines;
+    private Coordinates[] minesAt = new Coordinates[nTotalMines];
     
     //Size of the board
     int size_x = 16;
@@ -42,23 +55,24 @@ public class SquareArray extends GridPane implements Initializable{
     }
     
     public void shuffle () {
-        int m = 0;
-        while(m < nMines) {
+        nMines = 0;
+        while(nMines < nTotalMines) {
             Random r = new Random();
             int i = r.nextInt(size_x);
             int j = r.nextInt(size_y);
             if (!squares[i][j].check()) {
                 squares[i][j].setMine();
-                m++;
+                minesAt[nMines] = new Coordinates(i,j);
+                nMines++;
             }
         }
-        System.out.println(this.hashCode());
     }
     
     public void reset () {
-        for (int i = 0; i < squares.length; i++) {
-            for (int j = 0; j < squares[i].length; j++) {
-                squares[i][j].reset();
+        nMines = 0;
+        for (Square[] square1 : squares) {
+            for (Square square : square1) {
+                square.reset();
             }
         }
         shuffle();
@@ -73,10 +87,9 @@ public class SquareArray extends GridPane implements Initializable{
     
     public void handleClick (Square clicked) {
         if (!clicked.check()) {
-            //logic of unveiling mines
+            unveilSquare(clicked);
         } else {
-            squares = null;
-            System.out.println("check");
+            unveilMines();
         }
     }
     
@@ -87,4 +100,28 @@ public class SquareArray extends GridPane implements Initializable{
     public int getFlags() {
         return flags;
     }
+    
+    private void unveilMines () {
+        for (Coordinates c : minesAt) {
+            squares[c.x][c.y].check();
+        }
+    }
+    
+    private int unveilSquare (Square current) {
+        int r = 0;
+        for (int i = current.getX()-1; i <= current.getX()+1; i++) {
+            for (int j = current.getY()-1;j <= current.getY()+1; j++) {
+                if (i>size_x || i < 0 || j > size_y || j < 0) {
+                        continue;
+                    } else {
+                    if (squares[i][j].isMine()) {
+                        r++;
+                    }
+                }
+            }
+        }
+        current.setN(r);
+        return r;
+    }
+    
 }

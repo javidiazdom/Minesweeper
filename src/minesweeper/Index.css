@@ -11,13 +11,13 @@
 
 
 #flag{
-    -fx-background-image: url("mark.jpg");
+    -fx-background-image: url("assets/mark.jpg");
     -fx-background-size: 25 25;
     -fx-background-position: center center;
 }
 
 #mine{
-    -fx-background-image: url("bomb.png");
+    -fx-background-image: url("assets/bomb.png");
     -fx-background-size: 25 25;
     -fx-background-position: center center;
     -fx-border-width: 1; 
@@ -36,3 +36,39 @@
     -fx-pref-width: 400;
     -fx-pref-height: 400;
 }
+
+#resetClicked {
+    -fx-border-color: grey #d1d1d1 #d1d1d1 grey;
+    -fx-border-width: 3;
+    -fx-background-image: url(assets/Smiley.png);
+    -fx-background-position: center center;
+    -fx-background-size: 40 40;
+    -fx-background-repeat: no-repeat;
+}
+
+#resetUnclicked {
+    -fx-background-color: #d1d1d1;
+    -fx-border-color: white grey grey white;
+    -fx-background-image: url(assets/Smiley.png);
+    -fx-background-size: 40 40;
+    -fx-background-position: center center;
+    -fx-border-width: 3;
+    -fx-background-repeat: no-repeat;
+}
+
+#resetGameOver {
+    -fx-border-color: white grey grey white;
+    -fx-background-image: url(assets/gg.png);
+    -fx-background-size: 40 40;
+    -fx-background-position: center center;
+}
+
+.label {
+    -fx-font:20px "Courier New";
+    -fx-alignment: CENTER;
+}
+
+#1 {
+    fx-fill: #0066ff;
+}
+

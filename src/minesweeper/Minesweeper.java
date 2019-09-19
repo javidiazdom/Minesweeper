@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import minesweeper.grid.SquareArray;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -35,6 +36,8 @@ public class Minesweeper extends Application implements Initializable {
     private Polygon rectangle1;
     @FXML
     private AnchorPane AnchorPane;
+    @FXML
+    private Pane reset_button;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -58,10 +61,25 @@ public class Minesweeper extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeStyle();
-        GameLogic.initGame(squares);
+        squares.shuffle();
+    }
+    
+    public void resetClick () {
+        reset_button.setId("resetClicked");
+    }
+    
+    public void resetRelease () {
+        reset_button.setId("resetUnclicked");
+        squares.reset();
+    }
+    
+    public void gameOver () {
+        reset_button.setId("resetGameOver");
     }
     
     private void initializeStyle() {
+        reset_button.setLayoutX(201.00);
+        reset_button.setLayoutY(30.00);
         triangle_gray.setFill(Color.GREY);
         triangle_gray.getPoints().addAll(new Double[]{
             440.0, 10.0,
