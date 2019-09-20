@@ -26,7 +26,7 @@ public class SquareArray extends GridPane implements Initializable{
     
     //Constants:
     private int flags;
-    private final int nTotalMines=10;
+    private final int nTotalMines=40;
     
     //Variables
     private int nMines;
@@ -62,6 +62,13 @@ public class SquareArray extends GridPane implements Initializable{
             int j = r.nextInt(size_y);
             if (!squares[i][j].check()) {
                 squares[i][j].setMine();
+                for (int p = i-1; p<=i+1; p++){
+                    for (int q = j-1; q<=j+1; q++){
+                        if(p >= 0 && p < size_x && q >= 0 && q < size_y) {
+                            squares[p][q].addN();
+                        }
+                    }
+                }
                 minesAt[nMines] = new Coordinates(i,j);
                 nMines++;
             }
@@ -86,10 +93,12 @@ public class SquareArray extends GridPane implements Initializable{
     }
     
     public void handleClick (Square clicked) {
-        if (!clicked.check()) {
-            unveilSquare(clicked);
-        } else {
-            unveilMines();
+        if (!clicked.isChecked()) {
+            if (!clicked.check()) {
+                unveilSquares(clicked);
+            } else {
+                unveilMines();
+            }
         }
     }
     
@@ -107,21 +116,20 @@ public class SquareArray extends GridPane implements Initializable{
         }
     }
     
-    private int unveilSquare (Square current) {
-        int r = 0;
-        for (int i = current.getX()-1; i <= current.getX()+1; i++) {
-            for (int j = current.getY()-1;j <= current.getY()+1; j++) {
-                if (i>size_x || i < 0 || j > size_y || j < 0) {
-                        continue;
+    private void unveilSquares (Square actual) {
+        if (!actual.isChecked() && actual.setN()==0) {
+            int x = actual.getX();
+            int y = actual.getY();
+            for (int i = x-1; i <=x+1; i++) {
+                for ( int j = y-1; j<=y+1; j++) {
+                    if (i == x && j == y) {
                     } else {
-                    if (squares[i][j].isMine()) {
-                        r++;
+                        if (i >= 0 && i < size_x && j >= 0 && j < size_y) {
+                            unveilSquares(squares[i][j]);
+                        }
                     }
                 }
             }
         }
-        current.setN(r);
-        return r;
     }
-    
 }

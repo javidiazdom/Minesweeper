@@ -11,11 +11,11 @@ import javafx.scene.control.Label;
  * @author javidiazdom
  */
 public class Square extends Pane {
-    protected boolean isMine;
     protected boolean isChecked;
     private boolean flagged;
     
     private Label nMinesAround;
+    private int nMinesAr;
     
     SquareArray parent;
     
@@ -31,6 +31,7 @@ public class Square extends Pane {
         setMinWidth(25.00);
         this.x = i;
         this.y = j;
+        nMinesAr = 0;
         setOnMousePressed(new EventHandler<MouseEvent> () {
             public void handle(MouseEvent e) {
                 Object obj = e.getSource();
@@ -46,31 +47,32 @@ public class Square extends Pane {
         });
     }
     public void setMine() {
-        isMine = true;
+        nMinesAr = -1;
         setId("unclicked");
     }
     
     public boolean check() {
-        isChecked = true;
-        if (isChecked) {
-            if (isMine) {
+        if (!isChecked) {
+            if (nMinesAr == -1) {
                 setId("mine");
             } else {
                 setId("notmine");
             }
         }
-        return isMine;
+        return nMinesAr == -1;
     }
     
     public boolean isMine () {
-        return isMine;
+        return nMinesAr==-1;
     }
     
     
     public void reset () {
-        isMine = false;
+        nMinesAr = 0;
         isChecked = false;
         setId("unclicked");
+        nMinesAr = 0;
+        this.getChildren().remove(nMinesAround);
     }
     
     private void handleSecondaryClick () {
@@ -96,14 +98,20 @@ public class Square extends Pane {
         return isChecked;
     }
     
-    public void setN (int in) {
+    public int setN () {
         setId("notmine");
         isChecked=true;
-        if (in != 0) {
-            System.out.println(in);
-            nMinesAround = new Label(""+in+"");
-            nMinesAround.setId(""+in+"");
+        if (nMinesAr != 0) {
+            nMinesAround = new Label(""+nMinesAr+"");
+            nMinesAround.setId(""+nMinesAr+"");
             this.getChildren().add(nMinesAround);
+        }
+        return nMinesAr;
+    }
+    
+    public void addN () {
+        if (nMinesAr != -1) {
+        nMinesAr++;
         }
     }
 }
