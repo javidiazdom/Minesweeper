@@ -60,7 +60,7 @@ public class SquareArray extends GridPane implements Initializable{
             Random r = new Random();
             int i = r.nextInt(size_x);
             int j = r.nextInt(size_y);
-            if (!squares[i][j].check()) {
+            if (!squares[i][j].isMine()) {
                 squares[i][j].setMine();
                 for (int p = i-1; p<=i+1; p++){
                     for (int q = j-1; q<=j+1; q++){
