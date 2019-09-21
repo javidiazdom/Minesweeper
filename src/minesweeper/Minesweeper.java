@@ -39,6 +39,8 @@ public class Minesweeper extends Application implements Initializable {
     @FXML
     private Pane reset_button;
     
+    private static Minesweeper a;
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXML_Index.fxml"));
@@ -58,10 +60,15 @@ public class Minesweeper extends Application implements Initializable {
         launch(args);
     }
     
+    public static void setA (Minesweeper x){
+        a = x;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeStyle();
         squares.shuffle();
+        setA(this);
     }
     
     public void resetClick () {
@@ -73,8 +80,11 @@ public class Minesweeper extends Application implements Initializable {
         squares.reset();
     }
     
-    public void gameOver () {
-        reset_button.setId("resetGameOver");
+    public static void gameWon (){
+        
+    } 
+    public static void gameOver () {
+        a.reset_button.setId("resetGameOver");
     }
     
     private void initializeStyle() {

@@ -25,7 +25,9 @@ public class SquareArray extends GridPane implements Initializable{
     private final Square[][] squares;
     
     //Constants:
-    private int flags;
+    
+    private int unveiled;
+    private int flagged;
     private final int nTotalMines=40;
     
     //Variables
@@ -56,6 +58,7 @@ public class SquareArray extends GridPane implements Initializable{
     
     public void shuffle () {
         nMines = 0;
+        unveiled = 0;
         while(nMines < nTotalMines) {
             Random r = new Random();
             int i = r.nextInt(size_x);
@@ -96,18 +99,22 @@ public class SquareArray extends GridPane implements Initializable{
         if (!clicked.isChecked()) {
             if (!clicked.check()) {
                 unveilSquares(clicked);
+                if(unveiled == (size_x*size_y)-nMines) {
+                    Minesweeper.gameWon();
+                }
             } else {
                 unveilMines();
+                Minesweeper.gameOver();
             }
         }
     }
     
     protected void addFlag(int n) {
-        flags+= n;
+        flagged+= n;
     }
     
     public int getFlags() {
-        return flags;
+        return flagged;
     }
     
     private void unveilMines () {
@@ -117,15 +124,19 @@ public class SquareArray extends GridPane implements Initializable{
     }
     
     private void unveilSquares (Square actual) {
-        if (!actual.isChecked() && actual.setN()==0) {
-            int x = actual.getX();
-            int y = actual.getY();
-            for (int i = x-1; i <=x+1; i++) {
-                for ( int j = y-1; j<=y+1; j++) {
-                    if (i == x && j == y) {
-                    } else {
-                        if (i >= 0 && i < size_x && j >= 0 && j < size_y) {
-                            unveilSquares(squares[i][j]);
+        if (!actual.isChecked()) {
+            unveiled++;
+            System.out.println(unveiled);
+            if (actual.setN()==0) {
+                int x = actual.getX();
+                int y = actual.getY();
+                for (int i = x-1; i <=x+1; i++) {
+                    for ( int j = y-1; j<=y+1; j++) {
+                        if (i == x && j == y) {
+                        } else {
+                            if (i >= 0 && i < size_x && j >= 0 && j < size_y) {
+                                unveilSquares(squares[i][j]);
+                            }
                         }
                     }
                 }

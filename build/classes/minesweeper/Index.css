@@ -3,6 +3,10 @@
     Created on : 16-sep-2019, 23:09:33
     Author     : javid
 */
+
+@font-face {
+    src: url("assets/mine-sweeper.ttf");
+}
 #unclicked {
     -fx-background-color: #d1d1d1;
     -fx-border-color: white grey grey white;
@@ -60,15 +64,15 @@
     -fx-border-color: white grey grey white;
     -fx-background-image: url(assets/gg.png);
     -fx-background-size: 40 40;
+    -fx-border-width: 3;
     -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+
 }
+
 
 .label {
-    -fx-font:20px "Courier New";
+    -fx-font:14px 'MINE-SWEEPER';
     -fx-alignment: CENTER;
-}
-
-#1 {
-    fx-fill: #0066ff;
 }
 
