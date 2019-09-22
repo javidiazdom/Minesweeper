@@ -1,6 +1,5 @@
 package grid;
 
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseButton;
@@ -32,16 +31,14 @@ public class Square extends Pane {
         this.x = i;
         this.y = j;
         nMinesAr = 0;
-        setOnMousePressed(new EventHandler<MouseEvent> () {
-            public void handle(MouseEvent e) {
-                Object obj = e.getSource();
-                if (obj instanceof Square) {
-                    Square s = (Square) obj;
-                    if (e.getButton() == MouseButton.PRIMARY) {
-                        parent.handleClick(s);
-                    } else {
-                        handleSecondaryClick();
-                    }
+        setOnMousePressed((MouseEvent e) -> {
+            Object obj = e.getSource();
+            if (obj instanceof Square) {
+                Square s = (Square) obj;
+                if (e.getButton() == MouseButton.PRIMARY) {
+                    parent.handleClick(s);
+                } else {
+                    handleSecondaryClick();
                 }
             }
         });

@@ -80,6 +80,11 @@
 
 }
 
+#upper_panel {
+    -fx-background-color: #d1d1d1;
+    -fx-border-color:  grey white white grey;
+    -fx-border-width: 3;
+}
 
 .label {
     -fx-font:14px 'MINE-SWEEPER';

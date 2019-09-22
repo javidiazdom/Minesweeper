@@ -14,13 +14,13 @@
             fx:id="AnchorPane"
             xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="minesweeper.Minesweeper"
-            maxHeight="600" maxWidth="600"
             style="-fx-background-color:#d1d1d1;">
     <children>
         <Polygon fx:id="triangle_gray"/>
         <Polygon fx:id="triangle_white"/>
         <Polygon fx:id="rectangle1" style="-fx-fill:#d1d1d1;"/>
         <SquareArray fx:id="squares"/>
+        <Pane fx:id="upper_panel" prefWidth = "407" prefHeight = "68" id = "upper_panel"/>
         <Pane fx:id="reset_button" onMousePressed="#resetClick" onMouseReleased="#resetRelease"
               id = "resetUnclicked" prefWidth = "50" prefHeight="50"/>
         <Timer fx:id="timer" prefWidth = "88" prefHeight="50"/>

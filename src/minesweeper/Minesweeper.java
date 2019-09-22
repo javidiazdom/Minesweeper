@@ -44,6 +44,9 @@ public class Minesweeper extends Application implements Initializable {
     private Timer timer;
     @FXML
     private Counter counter;
+    @FXML
+    private Pane upper_panel;
+            
     
     private static Minesweeper a;
     
@@ -58,6 +61,9 @@ public class Minesweeper extends Application implements Initializable {
         scene.getStylesheets().addAll(this.getClass().getResource("/minesweeper/Index.css").toExternalForm());
         
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setHeight(560);
+        stage.setWidth(460);
         stage.show();
     }
 
@@ -114,6 +120,8 @@ public class Minesweeper extends Application implements Initializable {
     private void initializeStyle() {
         reset_button.setLayoutX(201.00);
         reset_button.setLayoutY(30.00);
+        upper_panel.setLayoutX(20.00);
+        upper_panel.setLayoutY(20.00);
         triangle_gray.setFill(Color.GREY);
         triangle_gray.getPoints().addAll(new Double[]{
             440.0, 10.0,

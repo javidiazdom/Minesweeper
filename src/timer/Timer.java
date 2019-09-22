@@ -18,7 +18,7 @@ public class Timer extends Pane implements Runnable {
     public Timer () {
         t1 = new Thread(this);
         setId("timer");
-        setLayoutX(335.00);
+        setLayoutX(330.00);
         setLayoutY(30.00);
         backLabel = new Label ("888");
         this.getChildren().add(backLabel);
@@ -37,12 +37,7 @@ public class Timer extends Pane implements Runnable {
     
     @Override
     public void run () {
-        Runnable updater = new Runnable () {
-            @Override
-            public void run () {
-                incrementCount();
-            }
-        };
+        Runnable updater = this::incrementCount;
         while (!t1.isInterrupted()) {
             try {
                 Thread.sleep(1000);
@@ -66,6 +61,7 @@ public class Timer extends Pane implements Runnable {
     public void reset () {
         count=0;
         secondsLabel.setText(String.format("%03d",count));
+        t1.interrupt();
         t1 = new Thread(this);
         t1.setDaemon(true);
         t1.start();

@@ -1,9 +1,6 @@
 package grid;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
-import javafx.fxml.*;
 import java.util.Random;
 import minesweeper.Minesweeper;
 
@@ -41,7 +38,7 @@ public class SquareArray extends GridPane {
     public SquareArray () {
         flagged = Minesweeper.N_MINES;
         setLayoutX(21.0);
-        setLayoutY(90.00);
+        setLayoutY(100.00);
         setId("square-array");
         squares = new Square[size_x][size_y];
         for (int i = 0; i<16;i++) {
