@@ -8,6 +8,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import grid.SquareArray?>
 <?import timer.Timer?>
+<?import counter.Counter?>
 
 <AnchorPane id="AnchorPane" prefHeight="540" prefWidth="450"
             fx:id="AnchorPane"
@@ -23,5 +24,6 @@
         <Pane fx:id="reset_button" onMousePressed="#resetClick" onMouseReleased="#resetRelease"
               id = "resetUnclicked" prefWidth = "50" prefHeight="50"/>
         <Timer fx:id="timer" prefWidth = "88" prefHeight="50"/>
+        <Counter fx:id="counter" prefWidth = "58" prefHeight="50"/>
     </children>
 </AnchorPane>

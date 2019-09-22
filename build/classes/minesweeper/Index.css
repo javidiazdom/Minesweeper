@@ -4,7 +4,7 @@
     Author     : javid
 */
 @font-face {
-    src: url("assets/digital-7.ttf");
+    src: url("assets/Segment7Standard.otf");
 }
 @font-face {
     src: url("assets/mine-sweeper.ttf");
@@ -43,6 +43,14 @@
     -fx-pref-height: 400;
 }
 
+#resetGameWon {
+    -fx-border-color: white grey grey white;
+    -fx-border-width: 3;
+    -fx-background-image: url(assets/win.png);
+    -fx-background-position: center center;
+    -fx-background-size: 40 40;
+    -fx-background-repeat: no-repeat;
+}
 #resetClicked {
     -fx-border-color: grey #d1d1d1 #d1d1d1 grey;
     -fx-border-width: 3;
@@ -83,11 +91,11 @@
 }
 
 #numbers-back {
-    -fx-font: 60px 'Digital-7';
+    -fx-font: 50px 'Segment7';
     -fx-text-fill: #540000;
 }
 
 #numbers-front {
-    -fx-font: 60px 'Digital-7';
+    -fx-font: 50px 'Segment7';
     -fx-text-fill: #ff0000;
 }

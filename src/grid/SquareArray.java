@@ -28,7 +28,7 @@ public class SquareArray extends GridPane {
     
     private int unveiled;
     private int flagged;
-    private final int nTotalMines=40;
+    private final int nTotalMines=Minesweeper.N_MINES;
     
     //Variables
     private int nMines;
@@ -39,6 +39,7 @@ public class SquareArray extends GridPane {
     int size_y = 16;
     
     public SquareArray () {
+        flagged = Minesweeper.N_MINES;
         setLayoutX(21.0);
         setLayoutY(90.00);
         setId("square-array");
@@ -74,6 +75,7 @@ public class SquareArray extends GridPane {
     }
     
     public void reset () {
+        flagged = Minesweeper.N_MINES;
         nMines = 0;
         for (Square[] square1 : squares) {
             for (Square square : square1) {
@@ -105,7 +107,8 @@ public class SquareArray extends GridPane {
     }
     
     protected void addFlag(int n) {
-        flagged+= n;
+        flagged-= n;
+        Minesweeper.setFlags(flagged);
     }
     
     public int getFlags() {
@@ -121,7 +124,6 @@ public class SquareArray extends GridPane {
     private void unveilSquares (Square actual) {
         if (!actual.isChecked()) {
             unveiled++;
-            System.out.println(unveiled);
             if (actual.setN()==0) {
                 int x = actual.getX();
                 int y = actual.getY();

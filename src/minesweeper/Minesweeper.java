@@ -18,9 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import grid.SquareArray;
-import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import timer.Timer;
+import counter.Counter;
 
 /**
  *
@@ -42,8 +42,12 @@ public class Minesweeper extends Application implements Initializable {
     private Pane reset_button;
     @FXML
     private Timer timer;
+    @FXML
+    private Counter counter;
     
     private static Minesweeper a;
+    
+    public static final int N_MINES = 40;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -73,7 +77,7 @@ public class Minesweeper extends Application implements Initializable {
         initializeStyle();
         squares.shuffle();
         setA(this);
-
+        counter.set(N_MINES);
     }
     
     public void resetClick () {
@@ -83,13 +87,28 @@ public class Minesweeper extends Application implements Initializable {
     public void resetRelease () {
         reset_button.setId("resetUnclicked");
         squares.reset();
+        a.resetTimer();
+        counter.set(N_MINES);
+    }
+    
+    public static void setFlags(int i) {
+        a.counter.set(i);
     }
     
     public static void gameWon (){
-        
+        a.reset_button.setId("resetGameWon");
     } 
     public static void gameOver () {
         a.reset_button.setId("resetGameOver");
+        a.stopTimer();
+    }
+    
+    public void stopTimer() {
+        timer.stop();
+    }
+    
+    public void resetTimer() {
+        timer.reset();
     }
     
     private void initializeStyle() {
@@ -114,8 +133,4 @@ public class Minesweeper extends Application implements Initializable {
             437.00,13.00
         });
     }
-    
-    
-    
-    
 }

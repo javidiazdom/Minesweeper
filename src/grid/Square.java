@@ -119,7 +119,7 @@ public class Square extends Pane {
     
     public void addN () {
         if (nMinesAr != -1) {
-        nMinesAr++;
+            nMinesAr++;
         }
     }
 }

@@ -16,19 +16,18 @@ public class Timer extends Pane implements Runnable {
     private int count;
     
     public Timer () {
-        Thread t1 = new Thread(this);
+        t1 = new Thread(this);
         setId("timer");
         setLayoutX(335.00);
         setLayoutY(30.00);
         backLabel = new Label ("888");
         this.getChildren().add(backLabel);
         backLabel.setId("numbers-back");
-        backLabel.setTranslateX(1.00);
-        backLabel.setTranslateY(1.00);
+        backLabel.setTranslateY(-3.00);
         secondsLabel = new Label("");
+        count = 0;
         secondsLabel.setId("numbers-front");
-        secondsLabel.setTranslateX(1.00);
-        secondsLabel.setTranslateY(1.00);
+        secondsLabel.setTranslateY(-3.00);
         this.getChildren().add(secondsLabel);
         t1.setDaemon(true);
         t1.start();
@@ -44,20 +43,32 @@ public class Timer extends Pane implements Runnable {
                 incrementCount();
             }
         };
-            while (true) {
+        while (!t1.isInterrupted()) {
             try {
                 Thread.sleep(1000);
-
-            } catch (Exception e) {
-                System.out.println("Algo salio mal");
+                Platform.runLater(updater);
+            } catch (InterruptedException e) {
+                break;
             }
-            Platform.runLater(updater);
         }
     }
     
     
     public void incrementCount () {
         count++;
-        secondsLabel.setText(""+count);
+        secondsLabel.setText(String.format("%03d",count));
+    }
+    
+    public void stop() {
+        t1.interrupt();
+    }
+    
+    public void reset () {
+        count=0;
+        secondsLabel.setText(String.format("%03d",count));
+        t1 = new Thread(this);
+        t1.setDaemon(true);
+        t1.start();
+
     }
 }
