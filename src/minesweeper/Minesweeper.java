@@ -17,8 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import minesweeper.grid.SquareArray;
+import grid.SquareArray;
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
+import timer.Timer;
 
 /**
  *
@@ -38,6 +40,8 @@ public class Minesweeper extends Application implements Initializable {
     private AnchorPane AnchorPane;
     @FXML
     private Pane reset_button;
+    @FXML
+    private Timer timer;
     
     private static Minesweeper a;
     
@@ -69,6 +73,7 @@ public class Minesweeper extends Application implements Initializable {
         initializeStyle();
         squares.shuffle();
         setA(this);
+
     }
     
     public void resetClick () {

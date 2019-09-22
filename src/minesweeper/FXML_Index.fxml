@@ -6,7 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Polygon?>
-<?import minesweeper.grid.SquareArray?>
+<?import grid.SquareArray?>
+<?import timer.Timer?>
 
 <AnchorPane id="AnchorPane" prefHeight="540" prefWidth="450"
             fx:id="AnchorPane"
@@ -21,5 +22,6 @@
         <SquareArray fx:id="squares"/>
         <Pane fx:id="reset_button" onMousePressed="#resetClick" onMouseReleased="#resetRelease"
               id = "resetUnclicked" prefWidth = "50" prefHeight="50"/>
+        <Timer fx:id="timer" prefWidth = "88" prefHeight="50"/>
     </children>
 </AnchorPane>

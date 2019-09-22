@@ -3,7 +3,9 @@
     Created on : 16-sep-2019, 23:09:33
     Author     : javid
 */
-
+@font-face {
+    src: url("assets/digital-7.ttf");
+}
 @font-face {
     src: url("assets/mine-sweeper.ttf");
 }
@@ -76,3 +78,16 @@
     -fx-alignment: CENTER;
 }
 
+#timer {
+    -fx-background-color: #000000;
+}
+
+#numbers-back {
+    -fx-font: 60px 'Digital-7';
+    -fx-text-fill: #540000;
+}
+
+#numbers-front {
+    -fx-font: 60px 'Digital-7';
+    -fx-text-fill: #ff0000;
+}
