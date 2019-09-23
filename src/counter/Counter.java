@@ -33,6 +33,8 @@ public class Counter extends Pane {
     }
     
     public void set(int nMines) {
-        flagsLabel.setText(String.format("%02d", nMines));
+        if (nMines >= 0) {
+            flagsLabel.setText(String.format("%02d", nMines));
+        }
     }
 }
