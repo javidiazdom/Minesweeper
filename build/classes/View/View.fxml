@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import View.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="540" prefWidth="450"
+            fx:id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="Control.MinesweeperController"
+            style="-fx-background-color:#d1d1d1;">
+    <Pane id="backgroundSquare"/>
+    <Pane id="topPanelBackgroundSquare"/>
+    <TimerDisplay fx:id="timerDisplay" id="timer"/>
+    <CounterDisplay fx:id="counterDisplay" id="counter"/>
+    <Pane fx:id="resetButton" onMousePressed="#handleResetClick" onMouseReleased="#handleResetRelease" 
+          id = "resetUnclicked" prefWidth = "50" prefHeight="50"/>
+    <BoardDisplay fx:id="boardDisplay" onMouseClicked="#handleClickGrid"/>
+</AnchorPane>

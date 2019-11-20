@@ -1,0 +1,142 @@
+@font-face {
+    src: url("/Assets/Segment7Standard.otf");
+}
+@font-face {
+    src: url("/Assets/mine-sweeper.ttf");
+}
+#backgroundSquare {
+    -fx-background-color: #d1d1d1;
+    -fx-border-width: 3; 
+    -fx-border-color: white grey grey white;
+    -fx-translate-x: 13;
+    -fx-translate-y: 13;
+    -fx-pref-width: 424;
+    -fx-pref-height: 503;
+}
+
+#topPanelBackgroundSquare {
+    -fx-background-color: #d1d1d1;
+    -fx-border-width: 3; 
+    -fx-border-color: grey white white grey;
+    -fx-translate-x: 22;
+    -fx-translate-y: 22;
+    -fx-pref-width: 403;
+    -fx-pref-height: 66;
+}
+
+#boardDisplay {
+    -fx-background-color: #d1d1d1;
+    -fx-border-width: 3; 
+    -fx-border-color: grey white white grey;
+    -fx-pref-width: 400;
+    -fx-pref-height: 400;
+    -fx-translate-x: 22;
+    -fx-translate-y: 97;
+}
+
+#unclickedCell {
+    -fx-background-color: #cccccc;
+    -fx-border-color: white grey grey white;
+    -fx-border-width: 3;
+}
+
+#bomb{
+    -fx-background-image: url("/Assets/bomb.png");
+    -fx-background-size: 25 25;
+    -fx-background-position: center center;
+    -fx-border-width: 1; 
+    -fx-background-color: #ff0000;
+}
+
+#notmine {
+    -fx-border-color: #a1a1a1 #a1a1a1 #a1a1a1 #a1a1a1;
+    -fx-border-width: 1;
+}
+
+#flagged {
+    -fx-background-image: url("/Assets/mark.jpg");
+    -fx-background-size: 25 25;
+    -fx-background-position: center center;
+}
+
+#counter {
+    -fx-background-color: #000000;
+    -fx-pref-width: 90;
+    -fx-pref-height: 50;
+    -fx-translate-x: 27;
+    -fx-translate-y: 30;
+}
+
+#timer {
+    -fx-background-color: #000000;
+    -fx-translate-x: 330;
+    -fx-translate-y: 30;
+    -fx-pref-width: 90;
+    -fx-pref-height: 50;
+}
+
+#numbers-back {
+    -fx-font: 50px 'Segment7';
+    -fx-text-fill: #540000;
+    -fx-translate-x: 1;
+    -fx-translate-y: -1;
+}
+
+#numbers-front {
+    -fx-font: 50px 'Segment7';
+    -fx-text-fill: #ff0000;
+    -fx-translate-y: 0;
+    -fx-translate-x: 0;
+}
+
+#resetClicked {
+    -fx-border-color: grey #d1d1d1 #d1d1d1 grey;
+    -fx-border-width: 3;
+    -fx-background-image: url(/Assets/Smiley.png);
+    -fx-background-position: center center;
+    -fx-background-size: 40 40;
+    -fx-background-repeat: no-repeat;
+    -fx-translate-x: 198;
+    -fx-translate-y: 30;
+}
+
+#resetUnclicked {
+    -fx-background-color: #d1d1d1;
+    -fx-border-color: white grey grey white;
+    -fx-background-image: url(/Assets/Smiley.png);
+    -fx-background-size: 40 40;
+    -fx-background-position: center center;
+    -fx-border-width: 3;
+    -fx-background-repeat: no-repeat;
+    -fx-translate-x: 198;
+    -fx-translate-y: 30;
+}
+
+#resetGameWon {
+    -fx-border-color: white grey grey white;
+    -fx-border-width: 3;
+    -fx-background-image: url(/Assets/win.png);
+    -fx-background-position: center center;
+    -fx-background-size: 40 40;
+    -fx-background-repeat: no-repeat;
+    -fx-translate-x: 198;
+    -fx-translate-y: 30;
+}
+
+#resetGameOver {
+    -fx-border-color: white grey grey white;
+    -fx-background-image: url(/Assets/gg.png);
+    -fx-background-size: 40 40;
+    -fx-border-width: 3;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+    -fx-translate-x: 198;
+    -fx-translate-y: 30;
+}
+
+.label {
+    -fx-font:14px 'MINE-SWEEPER';
+    -fx-translate-y: 3.00;
+    -fx-translate-x: 7.00;
+    
+}
