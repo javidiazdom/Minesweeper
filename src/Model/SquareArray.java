@@ -29,7 +29,7 @@ public class SquareArray {
     }
     
     public void setMines (int nMines) {
-        nMines = nMines;
+        this.nMines = nMines;
         Random r = new Random();
         int x,y;
         for (int i = 0 ; i < nMines; i++) {

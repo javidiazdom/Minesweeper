@@ -74,12 +74,14 @@ public class MinesweeperController implements Initializable {
                     squares.setState(SquareStates.UNVEILED, x, y);
                     timerController.stop();
                     resetButton.setId("resetGameOver");
+                    unveilMines();
                     gameOnCourse = false;
                 } else {
                     GameLogic.unveilChain(boardDisplay,squares, x, y);
                     if (GameLogic.checkIfGameWon(squares)) {
                         resetButton.setId("resetGameWon");
                         gameOnCourse = false;
+                        timerController.stop();
                     }
                 }
                 
@@ -110,6 +112,16 @@ public class MinesweeperController implements Initializable {
             default: break;
         }
     }
+    
+    private void unveilMines () {
+        for (int i = 0; i < 16 ; i++) {
+            for (int j = 0; j < 16; j++) {
+                if (squares.isMine(i, j)) {
+                    boardDisplay.getChildren().get(i*16+j).setId("bomb");
+                }
+            }
+        }
+    }
 
     /* 
     This method runs after the root element from this controller has been 
@@ -119,6 +131,8 @@ public class MinesweeperController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         squares = new SquareArray(16);
         squares.setMines(30);
+        //Cheating
+        //unveilMines();
         timerController = new TimerController(timerDisplay, new Counter());
         timerController.start();
         counter = new Counter();

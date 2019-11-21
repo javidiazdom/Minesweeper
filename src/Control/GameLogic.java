@@ -47,7 +47,7 @@ public class GameLogic {
     }
     
     public static boolean checkIfGameWon(SquareArray squares) {
-        return squares.getNUnveiled() == squares.getSize() - squares.getNMines();
+        return squares.getNUnveiled() == squares.getSize() - squares.getNMines() + 1;
     }
     
     public static void resetGame (BoardDisplay boardDisplay,SquareArray squares,
